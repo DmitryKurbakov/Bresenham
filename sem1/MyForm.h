@@ -76,7 +76,8 @@ private:
 		// 
 		this->pictureBox->Location = System::Drawing::Point(12, 12);
 		this->pictureBox->Name = L"pictureBox";
-		this->pictureBox->Size = System::Drawing::Size(790, 452);
+		this->pictureBox->Size = System::Drawing::Size(969, 452);
+		this->pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 		this->pictureBox->TabIndex = 0;
 		this->pictureBox->TabStop = false;
 		this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::OnPaint);
@@ -85,7 +86,7 @@ private:
 		// 
 		this->circleButton->Location = System::Drawing::Point(80, 470);
 		this->circleButton->Name = L"circleButton";
-		this->circleButton->Size = System::Drawing::Size(75, 23);
+		this->circleButton->Size = System::Drawing::Size(75, 30);
 		this->circleButton->TabIndex = 2;
 		this->circleButton->Text = L"Circle";
 		this->circleButton->UseVisualStyleBackColor = true;
@@ -95,7 +96,7 @@ private:
 		this->lineButton->AutoSize = true;
 		this->lineButton->Location = System::Drawing::Point(12, 470);
 		this->lineButton->Name = L"lineButton";
-		this->lineButton->Size = System::Drawing::Size(62, 23);
+		this->lineButton->Size = System::Drawing::Size(62, 30);
 		this->lineButton->TabIndex = 1;
 		this->lineButton->Text = L"Line";
 		this->lineButton->UseVisualStyleBackColor = true;
@@ -104,14 +105,14 @@ private:
 		// 
 		this->clearButton->Location = System::Drawing::Point(161, 470);
 		this->clearButton->Name = L"clearButton";
-		this->clearButton->Size = System::Drawing::Size(75, 23);
+		this->clearButton->Size = System::Drawing::Size(76, 30);
 		this->clearButton->TabIndex = 3;
 		this->clearButton->Text = L"Clear";
 		this->clearButton->UseVisualStyleBackColor = true;
 		// 
 		// MyForm
 		// 
-		this->ClientSize = System::Drawing::Size(814, 505);
+		this->ClientSize = System::Drawing::Size(993, 559);
 		this->Controls->Add(this->clearButton);
 		this->Controls->Add(this->lineButton);
 		this->Controls->Add(this->circleButton);
@@ -132,8 +133,8 @@ private:
 void MyForm::OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventArgs ^e)
 {
 	bd = gcnew BrezenkhemDrawing(this->pictureBox);
-	bd->DrawCircle(200.0, 200.0, 100.0);
-
+	bd->DrawEllipse(20, 30, 20, 30);
+	delete bd;
 	//// Create pen.
 	//Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
 
@@ -146,7 +147,5 @@ void MyForm::OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventA
 
 void MyForm::OnResize(System::Object ^sender, System::EventArgs ^e)
 {
-	this->pictureBox->Width = this->Width;
-	this->pictureBox->Height = this->Height;
 
 }

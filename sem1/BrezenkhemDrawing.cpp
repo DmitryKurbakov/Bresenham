@@ -30,6 +30,11 @@ void BrezenkhemDrawing::DrawCircle(float x0, float y0, float radius)
 	Draw();
 }
 
+void BrezenkhemDrawing::DrawEllipse(float x0, float y0, float width, float height)
+{
+	BrezenkhemEllipse(x0, y0, width, height);
+	Draw();
+}
 
 void BrezenkhemDrawing::Draw()
 {
@@ -43,3 +48,4 @@ void BrezenkhemDrawing::Draw()
 	pictureBox->Image = bitmap;
 
 }
+

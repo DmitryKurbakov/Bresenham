@@ -20,7 +20,7 @@ public:
 	System::Windows::Forms::PictureBox^ getPictureBox();
 	void DrawLine(float x0, float y0, float x1, float y1);
 	void DrawCircle(float x0, float y0, float radius);
-	
+	void DrawEllipse(float x0, float y0, float width, float height);
 };
 
 

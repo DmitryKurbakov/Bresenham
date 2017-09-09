@@ -99,6 +99,86 @@ void BrezenkhemAlgorithm::BrezenkhemCircle(float x0, float y0, float radius)
 	}
 }
 
+void BrezenkhemAlgorithm::BrezenkhemEllipse(float x0, float y0, float x_radius, float y_radius)
+{
+	float
+		x, y,
+		x_change, y_change,
+		error,
+		a_square, b_square,
+		stop_x, stop_y;
+
+	a_square = 2 * x_radius * x_radius;
+	b_square = 2 * y_radius * y_radius;
+
+	x = x_radius;
+	y = 0;
+
+	x_change = y_radius * y_radius * (1 - 2 * x_radius);
+	y_change = x_radius * x_radius;
+
+	error = 0;
+
+	stop_x = b_square * x_radius;
+	stop_y = 0;
+
+	while (stop_x >= stop_y)
+	{
+		PutPointsToEllipseSet(x, y, x0, y0);
+
+		y++;
+		stop_y += a_square;
+		error += y_change;
+		y_change += a_square;
+
+		if ((2 * error + x_change) > 0)
+		{
+			x--;
+			stop_x -= b_square;
+			error += x_change;
+			x_change += b_square;
+		}
+	}
+
+	x = 0;
+	y = y_radius;
+
+	x_change = y_radius * y_radius;
+	y_change = x_radius * x_radius * (1 - 2 * y_radius);
+
+	error = 0;
+
+	stop_x = 0;
+	stop_y = a_square * y_radius;
+
+	while (stop_x <= stop_y)
+	{
+		PutPointsToEllipseSet(x, y, x0, y0);
+
+		x++;
+		stop_x += b_square;
+		error += x_change;
+		x_change += b_square;
+
+		if ((2 * error + y_change) > 0)
+		{
+			y--;
+			stop_y -= a_square;
+			error += y_change;
+			y_change += a_square;
+		}
+	}
+}
+
+
+void BrezenkhemAlgorithm::PutPointsToEllipseSet(float x, float y, float x0, float y0)
+{
+	PushPoint(x0 + x, y0 + y);
+	PushPoint(x0 - x, y0 + y);
+	PushPoint(x0 - x, y0 - y);
+	PushPoint(x0 + x, y0 - y);
+}
+
 void BrezenkhemAlgorithm::PushPoint(float x, float y)
 {
 	Tuple<float, float>^ temp_tuple = gcnew Tuple<float, float>(x, y);
