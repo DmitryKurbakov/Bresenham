@@ -12,14 +12,16 @@ private:
 	Point^ point0;
 	Point^ point1;
 	int radius;
+	int width, height;
 
 public:
 
 	ActionsHandlers(PictureBox^ pictureBox);
 	~ActionsHandlers();
 
-	void PictureBoxOnClickHandler(Point point);
-
+	void LinePictureBoxOnClickHandler(Point point);
+	void CirclePictureBoxOnClickHandler(Point point);
+	void EllipsePictureBoxOnClickHandler(Point point);
 };
 
 

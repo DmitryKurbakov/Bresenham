@@ -58,7 +58,11 @@ void BrezenkhemDrawing::Draw()
 
 	for (size_t i = 0; i < points->Count; i++)
 	{
-		bitmap->SetPixel(points[i]->Item1, points[i]->Item2, Color::Black);
+		if (points[i]->Item1 < bitmap->Width && points[i]->Item1 > 0 &&
+			points[i]->Item2 < bitmap->Height && points[i]->Item2 > 0)
+		{
+			bitmap->SetPixel(points[i]->Item1, points[i]->Item2, Color::Black);
+		}		
 	}
 
 	pictureBox->Image = bitmap;
