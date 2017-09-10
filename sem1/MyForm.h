@@ -13,6 +13,9 @@ using namespace System::Drawing;
 /// </summary>
 public ref class MyForm : public System::Windows::Forms::Form
 {
+
+private:
+	ActionsHandlers^ actionshandlers;
 public:
 	MyForm(void)
 	{
@@ -20,11 +23,12 @@ public:
 		//
 		//TODO: добавьте код конструктора
 		//
+		actionshandlers = gcnew ActionsHandlers(pictureBox);
 	}
 private: System::Windows::Forms::Button^  circleButton;
 private: System::Windows::Forms::Button^  lineButton;
-	
 private: System::Windows::Forms::Button^  clearButton;
+
 protected:
 	/// <summary>
 	/// Освободить все используемые ресурсы.
@@ -36,8 +40,11 @@ protected:
 			delete components;
 		}
 	}
-private: System::Windows::Forms::PictureBox^  pictureBox;
-		 ActionsHandlers^ actionshandlers;
+	
+private:
+	System::Windows::Forms::PictureBox^  pictureBox;
+	
+
 private:
 	/// <summary>
 	/// Обязательная переменная конструктора.
@@ -64,6 +71,7 @@ private:
 		// 
 		// pictureBox
 		// 
+		this->pictureBox->BackColor = System::Drawing::SystemColors::ControlLightLight;
 		this->pictureBox->Location = System::Drawing::Point(12, 12);
 		this->pictureBox->Name = L"pictureBox";
 		this->pictureBox->Size = System::Drawing::Size(969, 452);
@@ -71,7 +79,6 @@ private:
 		this->pictureBox->TabIndex = 0;
 		this->pictureBox->TabStop = false;
 		this->pictureBox->Click += gcnew System::EventHandler(this, &MyForm::pictureBox_Click);
-		//this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::OnPaint);
 		// 
 		// circleButton
 		// 
@@ -113,16 +120,13 @@ private:
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->ResumeLayout(false);
 		this->PerformLayout();
-		//
-		//
-		//
-		actionshandlers = gcnew ActionsHandlers(pictureBox);
 
 	}
 #pragma endregion
 
 private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
-	
+	Point cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
+	actionshandlers->PictureBoxOnClickHandler(cursor_point);
 }
 };
 

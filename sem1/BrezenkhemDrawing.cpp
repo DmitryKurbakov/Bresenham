@@ -6,8 +6,6 @@ BrezenkhemDrawing::BrezenkhemDrawing(System::Windows::Forms::PictureBox^ picture
 }
 
 
-
-
 BrezenkhemDrawing::~BrezenkhemDrawing()
 {
 }
@@ -24,9 +22,9 @@ void BrezenkhemDrawing::DrawLine(float x0, float y0, float x1, float y1)
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawLine(Point point0, Point point1)
+void BrezenkhemDrawing::DrawLine(Point^ point0, Point^ point1)
 {
-	BrezenkhemLine(point0.X, point0.Y, point1.X, point1.Y);
+	BrezenkhemLine(point0->X, point0->Y, point1->X, point1->Y);
 	Draw();
 }
 
@@ -36,9 +34,9 @@ void BrezenkhemDrawing::DrawCircle(float x0, float y0, float radius)
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawCircle(Point center, float radius)
+void BrezenkhemDrawing::DrawCircle(Point^ center, float radius)
 {
-	BrezenkhemCircle(center.X, center.Y, radius);
+	BrezenkhemCircle(center->X, center->Y, radius);
 	Draw();
 }
 
@@ -48,9 +46,9 @@ void BrezenkhemDrawing::DrawEllipse(float x0, float y0, float width, float heigh
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawEllipse(Point center, float width, float height)
+void BrezenkhemDrawing::DrawEllipse(Point^ center, float width, float height)
 {
-	BrezenkhemEllipse(center.X, center.Y, width, height);
+	BrezenkhemEllipse(center->X, center->Y, width, height);
 	Draw();
 }
 
@@ -64,7 +62,6 @@ void BrezenkhemDrawing::Draw()
 	}
 
 	pictureBox->Image = bitmap;
-	delete bitmap;
 
 }
 

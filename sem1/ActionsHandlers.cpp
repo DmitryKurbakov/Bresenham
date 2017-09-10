@@ -13,7 +13,6 @@ ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 
 	Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
 	this->pictureBox->Image = bitmap;
-	delete bitmap;
 }
 
 
@@ -24,9 +23,24 @@ ActionsHandlers::~ActionsHandlers()
 
 void ActionsHandlers::PictureBoxOnClickHandler(Point point)
 {
-	if (point0->X != -1 && point0->Y != -1 && point1->X != -1 && point1->Y != -1)
+	if (point0->X == -1 && point0->Y == -1)
 	{
-		//brezDrawing->BrezenkhemLine();
+		point0->X = point.X;
+		point0->Y = point.Y;
 	}
 
+	else
+	{
+		point1->X = point.X;
+		point1->Y = point.Y;
+	}
+
+	if (point0->X != -1 && point0->Y != -1 && point1->X != -1 && point1->Y != -1)
+	{
+		brezDrawing->DrawLine(point0, point1);
+		point0->X = -1;
+		point0->Y = -1;
+		point1->X = -1;
+		point1->Y = -1;
+	}
 }
