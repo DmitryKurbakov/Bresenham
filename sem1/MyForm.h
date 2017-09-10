@@ -116,13 +116,13 @@ private:
 		//
 		//
 		//
-	
+		actionshandlers = gcnew ActionsHandlers(pictureBox);
 
 	}
 #pragma endregion
 
 private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
-
+	
 }
 };
 

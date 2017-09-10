@@ -24,15 +24,33 @@ void BrezenkhemDrawing::DrawLine(float x0, float y0, float x1, float y1)
 	Draw();
 }
 
+void BrezenkhemDrawing::DrawLine(Point point0, Point point1)
+{
+	BrezenkhemLine(point0.X, point0.Y, point1.X, point1.Y);
+	Draw();
+}
+
 void BrezenkhemDrawing::DrawCircle(float x0, float y0, float radius)
 {
 	BrezenkhemCircle(x0, y0, radius);
 	Draw();
 }
 
+void BrezenkhemDrawing::DrawCircle(Point center, float radius)
+{
+	BrezenkhemCircle(center.X, center.Y, radius);
+	Draw();
+}
+
 void BrezenkhemDrawing::DrawEllipse(float x0, float y0, float width, float height)
 {
 	BrezenkhemEllipse(x0, y0, width, height);
+	Draw();
+}
+
+void BrezenkhemDrawing::DrawEllipse(Point center, float width, float height)
+{
+	BrezenkhemEllipse(center.X, center.Y, width, height);
 	Draw();
 }
 
