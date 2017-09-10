@@ -133,11 +133,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActionsHandlers.cpp" />
     <ClCompile Include="BrezenkhemAlgorithm.cpp" />
     <ClCompile Include="BrezenkhemDrawing.cpp" />
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionsHandlers.h" />
     <ClInclude Include="BrezenkhemAlgorithm.h" />
     <ClInclude Include="BrezenkhemDrawing.h" />
     <ClInclude Include="MyForm.h">

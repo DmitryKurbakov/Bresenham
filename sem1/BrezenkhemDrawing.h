@@ -12,7 +12,6 @@ private:
 	void Draw();
 
 	System::Windows::Forms::PictureBox^  pictureBox;
-	Bitmap^ bitmap;
 
 public:
 	BrezenkhemDrawing(System::Windows::Forms::PictureBox^ pictureBox);

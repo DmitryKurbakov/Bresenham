@@ -1,5 +1,5 @@
 
-#include "BrezenkhemDrawing.h"
+#include "ActionsHandlers.h"
 
 using namespace System;
 using namespace System::ComponentModel;
@@ -23,13 +23,8 @@ public:
 	}
 private: System::Windows::Forms::Button^  circleButton;
 private: System::Windows::Forms::Button^  lineButton;
-public:
-
-public:
-
+	
 private: System::Windows::Forms::Button^  clearButton;
-
-	BrezenkhemDrawing^ bd;
 protected:
 	/// <summary>
 	/// Освободить все используемые ресурсы.
@@ -42,12 +37,7 @@ protected:
 		}
 	}
 private: System::Windows::Forms::PictureBox^  pictureBox;
-protected:
-
-protected:
-
-protected:
-
+		 ActionsHandlers^ actionshandlers;
 private:
 	/// <summary>
 	/// Обязательная переменная конструктора.
@@ -80,7 +70,8 @@ private:
 		this->pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 		this->pictureBox->TabIndex = 0;
 		this->pictureBox->TabStop = false;
-		this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::OnPaint);
+		this->pictureBox->Click += gcnew System::EventHandler(this, &MyForm::pictureBox_Click);
+		//this->pictureBox->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &MyForm::OnPaint);
 		// 
 		// circleButton
 		// 
@@ -119,33 +110,34 @@ private:
 		this->Controls->Add(this->pictureBox);
 		this->Location = System::Drawing::Point(52, 42);
 		this->Name = L"MyForm";
-		this->Resize += gcnew System::EventHandler(this, &MyForm::OnResize);
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->ResumeLayout(false);
 		this->PerformLayout();
+		//
+		//
+		//
+	
 
 	}
 #pragma endregion
-	void OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventArgs ^e);
-	void OnResize(System::Object ^sender, System::EventArgs ^e);
+
+private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
+
+}
 };
 
-void MyForm::OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventArgs ^e)
-{
-	bd = gcnew BrezenkhemDrawing(this->pictureBox);
-	bd->DrawEllipse(20, 30, 20, 30);
-	delete bd;
-	//// Create pen.
-	//Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
+//void MyForm::OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventArgs ^e)
+//{
+//	/*bd = gcnew BrezenkhemDrawing(this->pictureBox);
+//	bd->DrawEllipse(20, 30, 20, 30);
+//	delete bd;*/
+//	//// Create pen.
+//	//Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
+//
+//	//Graphics^ g = Graphics::FromImage(bitmap);
+//	//g->DrawEllipse(Pens::Red, 20, 20, 20, 20);
+//
+//	//this->pictureBox->Image = bitmap;
+//	//// Draw ellipse to screen.
+//}
 
-	//Graphics^ g = Graphics::FromImage(bitmap);
-	//g->DrawEllipse(Pens::Red, 20, 20, 20, 20);
-
-	//this->pictureBox->Image = bitmap;
-	//// Draw ellipse to screen.
-}
-
-void MyForm::OnResize(System::Object ^sender, System::EventArgs ^e)
-{
-
-}

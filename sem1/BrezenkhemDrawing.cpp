@@ -38,7 +38,7 @@ void BrezenkhemDrawing::DrawEllipse(float x0, float y0, float width, float heigh
 
 void BrezenkhemDrawing::Draw()
 {
-	this->bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
+	Bitmap^ bitmap = gcnew Bitmap(pictureBox->Image);
 
 	for (size_t i = 0; i < points->Count; i++)
 	{
@@ -46,6 +46,7 @@ void BrezenkhemDrawing::Draw()
 	}
 
 	pictureBox->Image = bitmap;
+	delete bitmap;
 
 }
 
