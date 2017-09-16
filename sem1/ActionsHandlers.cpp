@@ -17,11 +17,16 @@ ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 	//Arbitary size
 	Bitmap^ bitmap = gcnew Bitmap(1920, 1080);
 	this->pictureBox->Image = bitmap;
+
+	IsDrawn = false;
 }
 
 
 ActionsHandlers::~ActionsHandlers()
 {
+	delete brezDrawing;
+	delete point0;
+	delete point1;
 }
 
 
@@ -48,6 +53,8 @@ void ActionsHandlers::LinePictureBoxOnClickHandler(Point^ point)
 	{
 		brezDrawing->DrawLine(point0, point1);
 
+		IsDrawn = true;
+
 		//Return default values of points
 		point0->X = -1;
 		point0->Y = -1;
@@ -73,6 +80,8 @@ void ActionsHandlers::CirclePictureBoxOnClickHandler(Point^ point)
 	if (point0->X != -1 && point0->Y != -1 && radius != -1)
 	{
 		brezDrawing->DrawCircle(point0, radius);
+
+		IsDrawn = true;
 
 		point0->X = -1;
 		point0->Y = -1;
@@ -105,6 +114,8 @@ void ActionsHandlers::EllipsePictureBoxOnClickHandler(Point^ point)
 	if (point0->X != -1 && point0->Y != -1 && width != -1 && height != -1)
 	{
 		brezDrawing->DrawEllipse(point0, width, height);
+
+		IsDrawn = true;
 
 		point0->X = -1;
 		point0->Y = -1;

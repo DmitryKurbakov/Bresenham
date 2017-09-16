@@ -42,6 +42,8 @@ void BrezenkhemAlgorithm::BrezenkhemLine(int x0, int y0, int x1, int y1)
 		Tuple<int, int>^ temp_tuple = gcnew Tuple<int, int>(x, y);
 		points->Add(temp_tuple);
 
+		delete temp_tuple;
+
 		while (e_mod >= 0)
 		{
 			if (flag)
@@ -183,4 +185,6 @@ void BrezenkhemAlgorithm::PushPoint(int x, int y)
 {
 	Tuple<int, int>^ temp_tuple = gcnew Tuple<int, int>(x, y);
 	points->Add(temp_tuple);
+
+	delete temp_tuple;
 }

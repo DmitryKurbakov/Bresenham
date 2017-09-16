@@ -27,13 +27,12 @@ using namespace System::Drawing;
 public ref class MyForm : public System::Windows::Forms::Form
 {
 
-private:
-	ActionsHandlers^ actionshandlers;
+
 public:
 	MyForm(void)
 	{
 		InitializeComponent();
-		actionshandlers = gcnew ActionsHandlers(pictureBox);	//init controller
+		
 	}
 
 
@@ -41,12 +40,14 @@ private: System::Windows::Forms::GroupBox^  objectsGroupBox;
 private: System::Windows::Forms::RadioButton^  ellipseRadioButton;
 private: System::Windows::Forms::RadioButton^  circleRadioButton;
 private: System::Windows::Forms::RadioButton^  lineRadioButton;
-
+private: ActionsHandlers^ actionshandlers;
 
 
 private: System::Windows::Forms::GroupBox^  pictureGroupBox;
 private: System::Windows::Forms::PictureBox^  pictureBox;
 private: System::Windows::Forms::Button^  clearButton;
+//private:
+	
 
 protected:
 	~MyForm()
@@ -173,12 +174,14 @@ private:
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->ResumeLayout(false);
 
+		actionshandlers = gcnew ActionsHandlers(this->pictureBox);	//init controller;
+		
 	}
 #pragma endregion
 
 private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	Point cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
+	Point^ cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
 
 	if (lineRadioButton->Checked)
 	{
@@ -192,9 +195,12 @@ private: System::Void pictureBox_Click(System::Object^  sender, System::EventArg
 	{
 		actionshandlers->EllipsePictureBoxOnClickHandler(cursor_point);
 	}
+
+	delete cursor_point;
 }
 private: System::Void clearButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	pictureBox->Image = nullptr;
+	delete pictureBox->Image;
+	delete actionshandlers;
 
 	actionshandlers = gcnew ActionsHandlers(pictureBox);
 }

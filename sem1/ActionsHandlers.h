@@ -35,6 +35,8 @@ private:
 
 public:
 
+	bool IsDrawn;
+
 	ActionsHandlers(PictureBox^ pictureBox);
 	~ActionsHandlers();
 

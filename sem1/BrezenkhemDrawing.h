@@ -13,6 +13,7 @@ ref class BrezenkhemDrawing :
 	public BrezenkhemAlgorithm
 {
 private:
+	Bitmap^ temp_bitmap;
 
 	//Method of setting pixels on the picture using Algorithm layer
 	void Draw();
