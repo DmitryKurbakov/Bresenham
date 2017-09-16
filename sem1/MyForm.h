@@ -31,10 +31,18 @@ private: System::Windows::Forms::GroupBox^  objectsGroupBox;
 private: System::Windows::Forms::RadioButton^  ellipseRadioButton;
 private: System::Windows::Forms::RadioButton^  circleRadioButton;
 private: System::Windows::Forms::RadioButton^  lineRadioButton;
-private: System::Windows::Forms::GroupBox^  layoutGroupBox;
-private: System::Windows::Forms::CheckBox^  graphicsCheckBox;
-private: System::Windows::Forms::CheckBox^  userCheckBox;
+
+
+
 private: System::Windows::Forms::GroupBox^  pictureGroupBox;
+private: System::Windows::Forms::PictureBox^  pictureBox;
+
+
+
+
+
+
+
 private: System::Windows::Forms::Button^  clearButton;
 
 protected:
@@ -50,7 +58,7 @@ protected:
 	}
 	
 private:
-	System::Windows::Forms::PictureBox^  pictureBox;
+
 	
 
 private:
@@ -70,41 +78,28 @@ private:
 
 	void InitializeComponent(void)
 	{
-		this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 		this->clearButton = (gcnew System::Windows::Forms::Button());
 		this->objectsGroupBox = (gcnew System::Windows::Forms::GroupBox());
 		this->ellipseRadioButton = (gcnew System::Windows::Forms::RadioButton());
 		this->circleRadioButton = (gcnew System::Windows::Forms::RadioButton());
 		this->lineRadioButton = (gcnew System::Windows::Forms::RadioButton());
-		this->layoutGroupBox = (gcnew System::Windows::Forms::GroupBox());
-		this->userCheckBox = (gcnew System::Windows::Forms::CheckBox());
-		this->graphicsCheckBox = (gcnew System::Windows::Forms::CheckBox());
 		this->pictureGroupBox = (gcnew System::Windows::Forms::GroupBox());
-		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
+		this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 		this->objectsGroupBox->SuspendLayout();
-		this->layoutGroupBox->SuspendLayout();
 		this->pictureGroupBox->SuspendLayout();
+		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
 		this->SuspendLayout();
-		// 
-		// pictureBox
-		// 
-		this->pictureBox->BackColor = System::Drawing::SystemColors::ControlLightLight;
-		this->pictureBox->Location = System::Drawing::Point(6, 19);
-		this->pictureBox->Name = L"pictureBox";
-		this->pictureBox->Size = System::Drawing::Size(745, 361);
-		this->pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-		this->pictureBox->TabIndex = 0;
-		this->pictureBox->TabStop = false;
-		this->pictureBox->Click += gcnew System::EventHandler(this, &MyForm::pictureBox_Click);
 		// 
 		// clearButton
 		// 
+		this->clearButton->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Left));
 		this->clearButton->Location = System::Drawing::Point(12, 368);
 		this->clearButton->Name = L"clearButton";
 		this->clearButton->Size = System::Drawing::Size(76, 30);
 		this->clearButton->TabIndex = 3;
 		this->clearButton->Text = L"Clear";
 		this->clearButton->UseVisualStyleBackColor = true;
+		this->clearButton->Click += gcnew System::EventHandler(this, &MyForm::clearButton_Click);
 		// 
 		// objectsGroupBox
 		// 
@@ -150,72 +145,59 @@ private:
 		this->lineRadioButton->Text = L"Line";
 		this->lineRadioButton->UseVisualStyleBackColor = true;
 		// 
-		// layoutGroupBox
-		// 
-		this->layoutGroupBox->Controls->Add(this->graphicsCheckBox);
-		this->layoutGroupBox->Controls->Add(this->userCheckBox);
-		this->layoutGroupBox->Location = System::Drawing::Point(12, 107);
-		this->layoutGroupBox->Name = L"layoutGroupBox";
-		this->layoutGroupBox->Size = System::Drawing::Size(97, 78);
-		this->layoutGroupBox->TabIndex = 5;
-		this->layoutGroupBox->TabStop = false;
-		this->layoutGroupBox->Text = L"Layout";
-		// 
-		// userCheckBox
-		// 
-		this->userCheckBox->AutoSize = true;
-		this->userCheckBox->Checked = true;
-		this->userCheckBox->CheckState = System::Windows::Forms::CheckState::Checked;
-		this->userCheckBox->Location = System::Drawing::Point(7, 20);
-		this->userCheckBox->Name = L"userCheckBox";
-		this->userCheckBox->Size = System::Drawing::Size(48, 17);
-		this->userCheckBox->TabIndex = 0;
-		this->userCheckBox->Text = L"User";
-		this->userCheckBox->UseVisualStyleBackColor = true;
-		// 
-		// graphicsCheckBox
-		// 
-		this->graphicsCheckBox->AutoSize = true;
-		this->graphicsCheckBox->Location = System::Drawing::Point(7, 43);
-		this->graphicsCheckBox->Name = L"graphicsCheckBox";
-		this->graphicsCheckBox->Size = System::Drawing::Size(68, 17);
-		this->graphicsCheckBox->TabIndex = 1;
-		this->graphicsCheckBox->Text = L"Graphics";
-		this->graphicsCheckBox->UseVisualStyleBackColor = true;
-		// 
 		// pictureGroupBox
 		// 
+		this->pictureGroupBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			| System::Windows::Forms::AnchorStyles::Left)
+			| System::Windows::Forms::AnchorStyles::Right));
+		this->pictureGroupBox->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 		this->pictureGroupBox->Controls->Add(this->pictureBox);
 		this->pictureGroupBox->Location = System::Drawing::Point(115, 12);
 		this->pictureGroupBox->Name = L"pictureGroupBox";
-		this->pictureGroupBox->Size = System::Drawing::Size(757, 386);
+		this->pictureGroupBox->Size = System::Drawing::Size(754, 383);
 		this->pictureGroupBox->TabIndex = 6;
 		this->pictureGroupBox->TabStop = false;
 		this->pictureGroupBox->Text = L"Picture";
+		// 
+		// pictureBox
+		// 
+		this->pictureBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+			| System::Windows::Forms::AnchorStyles::Left)
+			| System::Windows::Forms::AnchorStyles::Right));
+		this->pictureBox->BackColor = System::Drawing::SystemColors::ControlLightLight;
+		this->pictureBox->Location = System::Drawing::Point(6, 19);
+		this->pictureBox->Name = L"pictureBox";
+		this->pictureBox->Size = System::Drawing::Size(742, 358);
+		this->pictureBox->TabIndex = 0;
+		this->pictureBox->TabStop = false;
+		this->pictureBox->Click += gcnew System::EventHandler(this, &MyForm::pictureBox_Click);
 		// 
 		// MyForm
 		// 
 		this->ClientSize = System::Drawing::Size(884, 410);
 		this->Controls->Add(this->pictureGroupBox);
-		this->Controls->Add(this->layoutGroupBox);
 		this->Controls->Add(this->objectsGroupBox);
 		this->Controls->Add(this->clearButton);
 		this->Location = System::Drawing::Point(52, 42);
 		this->Name = L"MyForm";
-		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
+		this->Resize += gcnew System::EventHandler(this, &MyForm::OnResize);
 		this->objectsGroupBox->ResumeLayout(false);
 		this->objectsGroupBox->PerformLayout();
-		this->layoutGroupBox->ResumeLayout(false);
-		this->layoutGroupBox->PerformLayout();
 		this->pictureGroupBox->ResumeLayout(false);
+		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->ResumeLayout(false);
 
 	}
 #pragma endregion
 
 private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
-	Point cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
+	//int x = System::Windows::Forms::Cursor::Position.X;
+	//int y = System::Windows::Forms::Cursor::Position.Y;
 	
+	//Point^ cursor_point = gcnew Point(x, y);
+
+	Point cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
+
 	if (lineRadioButton->Checked)
 	{
 		actionshandlers->LinePictureBoxOnClickHandler(cursor_point);
@@ -228,6 +210,12 @@ private: System::Void pictureBox_Click(System::Object^  sender, System::EventArg
 	{
 		actionshandlers->EllipsePictureBoxOnClickHandler(cursor_point);
 	}
+}
+		 void OnResize(System::Object ^sender, System::EventArgs ^e);
+private: System::Void clearButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	pictureBox->Image = nullptr;
+
+	actionshandlers = gcnew ActionsHandlers(pictureBox);
 }
 };
 
@@ -246,3 +234,9 @@ private: System::Void pictureBox_Click(System::Object^  sender, System::EventArg
 //	//// Draw ellipse to screen.
 //}
 
+
+
+void MyForm::OnResize(System::Object ^sender, System::EventArgs ^e)
+{
+	
+}

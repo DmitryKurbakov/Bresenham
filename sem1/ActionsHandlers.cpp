@@ -13,7 +13,7 @@ ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 
 	this->pictureBox = pictureBox;
 
-	Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
+	Bitmap^ bitmap = gcnew Bitmap(1920, 1080);
 	this->pictureBox->Image = bitmap;
 }
 
@@ -23,18 +23,18 @@ ActionsHandlers::~ActionsHandlers()
 }
 
 
-void ActionsHandlers::LinePictureBoxOnClickHandler(Point point)
+void ActionsHandlers::LinePictureBoxOnClickHandler(Point^ point)
 {
 	if (point0->X == -1 && point0->Y == -1)
 	{
-		point0->X = point.X;
-		point0->Y = point.Y;
+		point0->X = point->X;
+		point0->Y = point->Y;
 	}
 
 	else
 	{
-		point1->X = point.X;
-		point1->Y = point.Y;
+		point1->X = point->X;
+		point1->Y = point->Y;
 	}
 
 	if (point0->X != -1 && point0->Y != -1 && point1->X != -1 && point1->Y != -1)
@@ -48,17 +48,18 @@ void ActionsHandlers::LinePictureBoxOnClickHandler(Point point)
 	}
 }
 
-void ActionsHandlers::CirclePictureBoxOnClickHandler(Point point)
+void ActionsHandlers::CirclePictureBoxOnClickHandler(Point^ point)
 {
 	if (point0->X == -1 && point0->Y == -1)
 	{
-		point0->X = point.X;
-		point0->Y = point.Y;
+		point0->X = point->X;
+		point0->Y = point->Y;
 	}
 
 	else
 	{
-		radius = sqrt((point.X - point0->X) * (point.X - point0->X) + (point.Y - point0->Y) * (point.Y - point0->Y));
+		radius = sqrt((point->X - point0->X) * (point->X - point0->X) 
+			+ (point->Y - point0->Y) * (point->Y - point0->Y));
 	}
 
 	if (point0->X != -1 && point0->Y != -1 && radius != -1)
@@ -71,23 +72,25 @@ void ActionsHandlers::CirclePictureBoxOnClickHandler(Point point)
 	}
 }
 
-void ActionsHandlers::EllipsePictureBoxOnClickHandler(Point point)
+void ActionsHandlers::EllipsePictureBoxOnClickHandler(Point^ point)
 {
 	if (point0->X == -1 && point0->Y == -1)
 	{
-		point0->X = point.X;
-		point0->Y = point.Y;
+		point0->X = point->X;
+		point0->Y = point->Y;
 	}
 
 	else
 	{
 		if (width == -1)
 		{
-			width = sqrt((point.X - point0->X) * (point.X - point0->X) + (point.Y - point0->Y) * (point.Y - point0->Y));
+			width = sqrt((point->X - point0->X) * (point->X - point0->X) 
+				+ (point->Y - point0->Y) * (point->Y - point0->Y));
 		}
 		else
 		{
-			height = sqrt((point.X - point0->X) * (point.X - point0->X) + (point.Y - point0->Y) * (point.Y - point0->Y));
+			height = sqrt((point->X - point0->X) * (point->X - point0->X)
+				+ (point->Y - point0->Y) * (point->Y - point0->Y));
 		}
 	}
 
@@ -101,3 +104,5 @@ void ActionsHandlers::EllipsePictureBoxOnClickHandler(Point point)
 		height = -1;
 	}
 }
+
+

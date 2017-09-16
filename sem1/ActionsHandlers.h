@@ -1,4 +1,5 @@
 #pragma once
+
 #include "BrezenkhemDrawing.h"
 
 using namespace System::Windows::Forms;
@@ -19,9 +20,11 @@ public:
 	ActionsHandlers(PictureBox^ pictureBox);
 	~ActionsHandlers();
 
-	void LinePictureBoxOnClickHandler(Point point);
-	void CirclePictureBoxOnClickHandler(Point point);
-	void EllipsePictureBoxOnClickHandler(Point point);
+	void LinePictureBoxOnClickHandler(Point^ point);
+	void CirclePictureBoxOnClickHandler(Point^ point);
+	void EllipsePictureBoxOnClickHandler(Point^ point);
+
+	
 };
 
 

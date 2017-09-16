@@ -2,7 +2,7 @@
 
 BrezenkhemAlgorithm::BrezenkhemAlgorithm()
 {
-	points = gcnew System::Collections::Generic::List<Tuple<float, float>^>();
+	points = gcnew System::Collections::Generic::List<Tuple<int, int>^>();
 }
 
 
@@ -15,13 +15,13 @@ template <typename T> int sgn(T val)
 	return (T(0) < val) - (val < T(0));
 }
 
-void BrezenkhemAlgorithm::BrezenkhemLine(float x0, float y0, float x1, float y1)
+void BrezenkhemAlgorithm::BrezenkhemLine(int x0, int y0, int x1, int y1)
 {
 	bool flag = true;
 
 	int i = 0, s0 = sgn(x1 - x0), s1 = sgn(y1 - y0);
 
-	float
+	int
 		x = x0, y = y0,
 		delta_x = abs(x1 - x0), delta_y = abs(y1 - y0),
 		e_mod = 0;
@@ -39,7 +39,7 @@ void BrezenkhemAlgorithm::BrezenkhemLine(float x0, float y0, float x1, float y1)
 
 	for (int i = 0; i <= delta_x; i++)
 	{
-		Tuple<float, float>^ temp_tuple = gcnew Tuple<float, float>(x, y);
+		Tuple<int, int>^ temp_tuple = gcnew Tuple<int, int>(x, y);
 		points->Add(temp_tuple);
 
 		while (e_mod >= 0)
@@ -69,10 +69,10 @@ void BrezenkhemAlgorithm::BrezenkhemLine(float x0, float y0, float x1, float y1)
 	}
 }
 
-void BrezenkhemAlgorithm::BrezenkhemCircle(float x0, float y0, float radius)
+void BrezenkhemAlgorithm::BrezenkhemCircle(int x0, int y0, int radius)
 {
 
-	float x = 0, y = radius, gap = 0, delta = (2 - 2 * radius);
+	int x = 0, y = radius, gap = 0, delta = (2 - 2 * radius);
 	while (y >= 0)
 	{
 		PushPoint(x0 + x, y0 + y);
@@ -99,9 +99,9 @@ void BrezenkhemAlgorithm::BrezenkhemCircle(float x0, float y0, float radius)
 	}
 }
 
-void BrezenkhemAlgorithm::BrezenkhemEllipse(float x0, float y0, float x_radius, float y_radius)
+void BrezenkhemAlgorithm::BrezenkhemEllipse(int x0, int y0, int x_radius, int y_radius)
 {
-	float
+	int
 		x, y,
 		x_change, y_change,
 		error,
@@ -171,7 +171,7 @@ void BrezenkhemAlgorithm::BrezenkhemEllipse(float x0, float y0, float x_radius, 
 }
 
 
-void BrezenkhemAlgorithm::PutPointsToEllipseSet(float x, float y, float x0, float y0)
+void BrezenkhemAlgorithm::PutPointsToEllipseSet(int x, int y, int x0, int y0)
 {
 	PushPoint(x0 + x, y0 + y);
 	PushPoint(x0 - x, y0 + y);
@@ -179,8 +179,8 @@ void BrezenkhemAlgorithm::PutPointsToEllipseSet(float x, float y, float x0, floa
 	PushPoint(x0 + x, y0 - y);
 }
 
-void BrezenkhemAlgorithm::PushPoint(float x, float y)
+void BrezenkhemAlgorithm::PushPoint(int x, int y)
 {
-	Tuple<float, float>^ temp_tuple = gcnew Tuple<float, float>(x, y);
+	Tuple<int, int>^ temp_tuple = gcnew Tuple<int, int>(x, y);
 	points->Add(temp_tuple);
 }
