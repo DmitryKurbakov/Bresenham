@@ -5,6 +5,7 @@ ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 {
 	brezDrawing = gcnew BrezenkhemDrawing(pictureBox);
 
+	//The default Values for all geometric objects variables are "-1"
 	this->point0 = gcnew Point(-1, -1);
 	this->point1 = gcnew Point(-1, -1);
 	this->radius = -1;
@@ -13,6 +14,7 @@ ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 
 	this->pictureBox = pictureBox;
 
+	//Arbitary size
 	Bitmap^ bitmap = gcnew Bitmap(1920, 1080);
 	this->pictureBox->Image = bitmap;
 }
@@ -25,22 +27,28 @@ ActionsHandlers::~ActionsHandlers()
 
 void ActionsHandlers::LinePictureBoxOnClickHandler(Point^ point)
 {
+	//These Rulls apply to Circle and Ellipse handlers
+
+	//Check if the mouse button wasn't pressed the first time
 	if (point0->X == -1 && point0->Y == -1)
 	{
 		point0->X = point->X;
 		point0->Y = point->Y;
 	}
 
+	//If it was pressed refresh values for the second point
 	else
 	{
 		point1->X = point->X;
 		point1->Y = point->Y;
 	}
 
+	//If values of all points were refreshed, transfer their to Drawing Layer 
 	if (point0->X != -1 && point0->Y != -1 && point1->X != -1 && point1->Y != -1)
 	{
 		brezDrawing->DrawLine(point0, point1);
 
+		//Return default values of points
 		point0->X = -1;
 		point0->Y = -1;
 		point1->X = -1;

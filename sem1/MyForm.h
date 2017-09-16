@@ -1,3 +1,16 @@
+//	Курбаков Дмитрий
+//	БПИ143
+//	16.09
+//	Проект 1. Алгоритмы Брезенхема
+//	
+//	Visual Studio 2017
+//	Microsoft Windows 10
+//	i7-7700, gtx-1070, 8gb RAM
+
+//	Реализация прямой
+//	Реализация окружности
+//	Реализация эллипса
+//	Управление мышью
 
 #include "ActionsHandlers.h"
 
@@ -20,10 +33,7 @@ public:
 	MyForm(void)
 	{
 		InitializeComponent();
-		//
-		//TODO: добавьте код конструктора
-		//
-		actionshandlers = gcnew ActionsHandlers(pictureBox);
+		actionshandlers = gcnew ActionsHandlers(pictureBox);	//init controller
 	}
 
 
@@ -36,19 +46,9 @@ private: System::Windows::Forms::RadioButton^  lineRadioButton;
 
 private: System::Windows::Forms::GroupBox^  pictureGroupBox;
 private: System::Windows::Forms::PictureBox^  pictureBox;
-
-
-
-
-
-
-
 private: System::Windows::Forms::Button^  clearButton;
 
 protected:
-	/// <summary>
-	/// Освободить все используемые ресурсы.
-	/// </summary>
 	~MyForm()
 	{
 		if (components)
@@ -56,25 +56,12 @@ protected:
 			delete components;
 		}
 	}
-	
-private:
-
-	
 
 private:
-	/// <summary>
-	/// Обязательная переменная конструктора.
-	/// </summary>
+
 	System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
-
-
-	/// <summary>
-	/// Требуемый метод для поддержки конструктора — не изменяйте 
-	/// содержимое этого метода с помощью редактора кода.
-	/// </summary>
-
 
 	void InitializeComponent(void)
 	{
@@ -180,7 +167,6 @@ private:
 		this->Controls->Add(this->clearButton);
 		this->Location = System::Drawing::Point(52, 42);
 		this->Name = L"MyForm";
-		this->Resize += gcnew System::EventHandler(this, &MyForm::OnResize);
 		this->objectsGroupBox->ResumeLayout(false);
 		this->objectsGroupBox->PerformLayout();
 		this->pictureGroupBox->ResumeLayout(false);
@@ -191,10 +177,6 @@ private:
 #pragma endregion
 
 private: System::Void pictureBox_Click(System::Object^  sender, System::EventArgs^  e) {
-	//int x = System::Windows::Forms::Cursor::Position.X;
-	//int y = System::Windows::Forms::Cursor::Position.Y;
-	
-	//Point^ cursor_point = gcnew Point(x, y);
 
 	Point cursor_point = pictureBox->PointToClient(System::Windows::Forms::Cursor::Position);
 
@@ -211,32 +193,9 @@ private: System::Void pictureBox_Click(System::Object^  sender, System::EventArg
 		actionshandlers->EllipsePictureBoxOnClickHandler(cursor_point);
 	}
 }
-		 void OnResize(System::Object ^sender, System::EventArgs ^e);
 private: System::Void clearButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	pictureBox->Image = nullptr;
 
 	actionshandlers = gcnew ActionsHandlers(pictureBox);
 }
 };
-
-//void MyForm::OnPaint(System::Object ^sender, System::Windows::Forms::PaintEventArgs ^e)
-//{
-//	/*bd = gcnew BrezenkhemDrawing(this->pictureBox);
-//	bd->DrawEllipse(20, 30, 20, 30);
-//	delete bd;*/
-//	//// Create pen.
-//	//Bitmap^ bitmap = gcnew Bitmap(this->pictureBox->Width, this->pictureBox->Height);
-//
-//	//Graphics^ g = Graphics::FromImage(bitmap);
-//	//g->DrawEllipse(Pens::Red, 20, 20, 20, 20);
-//
-//	//this->pictureBox->Image = bitmap;
-//	//// Draw ellipse to screen.
-//}
-
-
-
-void MyForm::OnResize(System::Object ^sender, System::EventArgs ^e)
-{
-	
-}
