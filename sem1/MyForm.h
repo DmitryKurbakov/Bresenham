@@ -11,6 +11,8 @@
 //	Реализация окружности
 //	Реализация эллипса
 //	Управление мышью
+//
+//https://github.com/DmitryKurbakov/Bresenham
 
 #include "ActionsHandlers.h"
 
@@ -202,7 +204,5 @@ private: System::Void clearButton_Click(System::Object^  sender, System::EventAr
 	delete actionshandlers;
 
 	actionshandlers = gcnew ActionsHandlers(pictureBox);
-}
-private: System::Void statusStrip1_ItemClicked(System::Object^  sender, System::Windows::Forms::ToolStripItemClickedEventArgs^  e) {
 }
 };
