@@ -1,29 +1,29 @@
-#include "BrezenkhemDrawing.h"
+#include "BresenhamDrawing.h"
 
-BrezenkhemDrawing::BrezenkhemDrawing(System::Windows::Forms::PictureBox^ pictureBox)
+BresenhamDrawing::BresenhamDrawing(System::Windows::Forms::PictureBox^ pictureBox)
 {
 	this->pictureBox = pictureBox;
 }
 
 
-BrezenkhemDrawing::~BrezenkhemDrawing()
+BresenhamDrawing::~BresenhamDrawing()
 {
 	delete temp_bitmap;
 }
 
 
-System::Windows::Forms::PictureBox ^ BrezenkhemDrawing::getPictureBox()
+System::Windows::Forms::PictureBox ^ BresenhamDrawing::getPictureBox()
 {
 	return this->pictureBox;
 }
 
-void BrezenkhemDrawing::DrawLine(int x0, int y0, int x1, int y1)
+void BresenhamDrawing::DrawLine(int x0, int y0, int x1, int y1)
 {
-	BrezenkhemLine(x0, y0, x1, y1);
+	BresenhamLine(x0, y0, x1, y1);
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawLine(Point^ point0, Point^ point1)
+void BresenhamDrawing::DrawLine(Point^ point0, Point^ point1)
 {
 
 	//Draw line using the Graphics method with red pen
@@ -36,8 +36,8 @@ void BrezenkhemDrawing::DrawLine(Point^ point0, Point^ point1)
 	delete pictureBox->Image;
 	pictureBox->Image = bitmap;
 
-	//Draw line using the Brezenkhem method with black pen
-	BrezenkhemLine(point0->X, point0->Y, point1->X, point1->Y);
+	//Draw line using the Bresenham method with black pen
+	BresenhamLine(point0->X, point0->Y, point1->X, point1->Y);
 	Draw();
 
 	delete bitmap;
@@ -45,13 +45,13 @@ void BrezenkhemDrawing::DrawLine(Point^ point0, Point^ point1)
 	delete redPen;
 }
 
-void BrezenkhemDrawing::DrawCircle(int x0, int y0, int radius)
+void BresenhamDrawing::DrawCircle(int x0, int y0, int radius)
 {
-	BrezenkhemCircle(x0, y0, radius);
+	BresenhamCircle(x0, y0, radius);
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawCircle(Point^ center, int radius)
+void BresenhamDrawing::DrawCircle(Point^ center, int radius)
 {
 	//Draw cirle using the Graphics method with red pen
 	Bitmap^ bitmap = gcnew Bitmap(pictureBox->Image);
@@ -63,8 +63,8 @@ void BrezenkhemDrawing::DrawCircle(Point^ center, int radius)
 	delete pictureBox->Image;
 	pictureBox->Image = bitmap;
 
-	//Draw cirle using the Brezenkhem method with black pen
-	BrezenkhemCircle(center->X, center->Y, radius);
+	//Draw cirle using the Bresenham method with black pen
+	BresenhamCircle(center->X, center->Y, radius);
 	Draw();
 
 	delete bitmap;
@@ -72,13 +72,13 @@ void BrezenkhemDrawing::DrawCircle(Point^ center, int radius)
 	delete redPen;
 }
 
-void BrezenkhemDrawing::DrawEllipse(int x0, int y0, int width, int height)
+void BresenhamDrawing::DrawEllipse(int x0, int y0, int width, int height)
 {
-	BrezenkhemEllipse(x0, y0, width, height);
+	BresenhamEllipse(x0, y0, width, height);
 	Draw();
 }
 
-void BrezenkhemDrawing::DrawEllipse(Point^ center, int width, int height)
+void BresenhamDrawing::DrawEllipse(Point^ center, int width, int height)
 {
 
 	//Draw cirle using the Graphics method with red pen
@@ -92,7 +92,7 @@ void BrezenkhemDrawing::DrawEllipse(Point^ center, int width, int height)
 	pictureBox->Image = bitmap;
 
 	//Draw cirle using the Graphics method with black pen
-	BrezenkhemEllipse(center->X, center->Y, width, height);
+	BresenhamEllipse(center->X, center->Y, width, height);
 	Draw();
 
 	delete bitmap;
@@ -101,7 +101,7 @@ void BrezenkhemDrawing::DrawEllipse(Point^ center, int width, int height)
 }
 
 
-void BrezenkhemDrawing::Draw()
+void BresenhamDrawing::Draw()
 {
 	temp_bitmap = gcnew Bitmap(pictureBox->Image);
 

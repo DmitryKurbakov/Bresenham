@@ -5,12 +5,12 @@
 
 #pragma once
 
-#include "BrezenkhemAlgorithm.h"
+#include "BresenhamAlgorithm.h"
 
 using namespace System::Drawing;
 
-ref class BrezenkhemDrawing :
-	public BrezenkhemAlgorithm
+ref class BresenhamDrawing :
+	public BresenhamAlgorithm
 {
 private:
 	Bitmap^ temp_bitmap;
@@ -22,19 +22,19 @@ private:
 	System::Windows::Forms::PictureBox^  pictureBox;
 
 public:
-	BrezenkhemDrawing(System::Windows::Forms::PictureBox^ pictureBox);
-	~BrezenkhemDrawing();
+	BresenhamDrawing(System::Windows::Forms::PictureBox^ pictureBox);
+	~BresenhamDrawing();
 	System::Windows::Forms::PictureBox^ getPictureBox();
 
-	//Draw line in PictureBox using two methods: Brezenkhem algorithm and Graphics.DrawLine(...)
+	//Draw line in PictureBox using two methods: Bresenham algorithm and Graphics.DrawLine(...)
 	void DrawLine(int x0, int y0, int x1, int y1);
 	void DrawLine(Point^ point0, Point^ point1);
 
-	//Draw line in PictureBox using two methods: Brezenkhem algorithm and Graphics.DrawEllipse(...)
+	//Draw line in PictureBox using two methods: Bresenham algorithm and Graphics.DrawEllipse(...)
 	void DrawCircle(int x0, int y0, int radius);
 	void DrawCircle(Point^ center, int radius);
 
-	//Draw line in PictureBox using two methods: Brezenkhem algorithm and Graphics.DrawEllipse(...)
+	//Draw line in PictureBox using two methods: Bresenham algorithm and Graphics.DrawEllipse(...)
 	void DrawEllipse(int x0, int y0, int width, int height);
 	void DrawEllipse(Point^ center, int width, int height);
 };

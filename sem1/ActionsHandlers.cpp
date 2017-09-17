@@ -3,7 +3,7 @@
 
 ActionsHandlers::ActionsHandlers(PictureBox^ pictureBox)
 {
-	brezDrawing = gcnew BrezenkhemDrawing(pictureBox);
+	brezDrawing = gcnew BresenhamDrawing(pictureBox);
 
 	//The default Values for all geometric objects variables are "-1"
 	this->point0 = gcnew Point(-1, -1);

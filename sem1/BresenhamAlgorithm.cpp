@@ -1,12 +1,12 @@
-#include "BrezenkhemAlgorithm.h"
+#include "BresenhamAlgorithm.h"
 
-BrezenkhemAlgorithm::BrezenkhemAlgorithm()
+BresenhamAlgorithm::BresenhamAlgorithm()
 {
 	points = gcnew System::Collections::Generic::List<Tuple<int, int>^>();
 }
 
 
-BrezenkhemAlgorithm::~BrezenkhemAlgorithm()
+BresenhamAlgorithm::~BresenhamAlgorithm()
 {
 }
 
@@ -15,7 +15,7 @@ template <typename T> int sgn(T val)
 	return (T(0) < val) - (val < T(0));
 }
 
-void BrezenkhemAlgorithm::BrezenkhemLine(int x0, int y0, int x1, int y1)
+void BresenhamAlgorithm::BresenhamLine(int x0, int y0, int x1, int y1)
 {
 	bool flag = true;
 
@@ -71,7 +71,7 @@ void BrezenkhemAlgorithm::BrezenkhemLine(int x0, int y0, int x1, int y1)
 	}
 }
 
-void BrezenkhemAlgorithm::BrezenkhemCircle(int x0, int y0, int radius)
+void BresenhamAlgorithm::BresenhamCircle(int x0, int y0, int radius)
 {
 
 	int x = 0, y = radius, gap = 0, delta = (2 - 2 * radius);
@@ -101,7 +101,7 @@ void BrezenkhemAlgorithm::BrezenkhemCircle(int x0, int y0, int radius)
 	}
 }
 
-void BrezenkhemAlgorithm::BrezenkhemEllipse(int x0, int y0, int x_radius, int y_radius)
+void BresenhamAlgorithm::BresenhamEllipse(int x0, int y0, int x_radius, int y_radius)
 {
 	int
 		x, y,
@@ -173,7 +173,7 @@ void BrezenkhemAlgorithm::BrezenkhemEllipse(int x0, int y0, int x_radius, int y_
 }
 
 
-void BrezenkhemAlgorithm::PutPointsToEllipseSet(int x, int y, int x0, int y0)
+void BresenhamAlgorithm::PutPointsToEllipseSet(int x, int y, int x0, int y0)
 {
 	PushPoint(x0 + x, y0 + y);
 	PushPoint(x0 - x, y0 + y);
@@ -181,7 +181,7 @@ void BrezenkhemAlgorithm::PutPointsToEllipseSet(int x, int y, int x0, int y0)
 	PushPoint(x0 + x, y0 - y);
 }
 
-void BrezenkhemAlgorithm::PushPoint(int x, int y)
+void BresenhamAlgorithm::PushPoint(int x, int y)
 {
 	Tuple<int, int>^ temp_tuple = gcnew Tuple<int, int>(x, y);
 	points->Add(temp_tuple);

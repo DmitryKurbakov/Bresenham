@@ -6,7 +6,7 @@
 //	Visual Studio 2017
 //	Microsoft Windows 10
 //	i7-7700, gtx-1070, 8gb RAM
-
+//
 //	Реализация прямой
 //	Реализация окружности
 //	Реализация эллипса
@@ -32,7 +32,7 @@ public:
 	MyForm(void)
 	{
 		InitializeComponent();
-		
+		actionshandlers = gcnew ActionsHandlers(this->pictureBox);	//init controller;
 	}
 
 
@@ -45,6 +45,7 @@ private: ActionsHandlers^ actionshandlers;
 
 private: System::Windows::Forms::GroupBox^  pictureGroupBox;
 private: System::Windows::Forms::PictureBox^  pictureBox;
+
 private: System::Windows::Forms::Button^  clearButton;
 //private:
 	
@@ -174,8 +175,6 @@ private:
 		(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
 		this->ResumeLayout(false);
 
-		actionshandlers = gcnew ActionsHandlers(this->pictureBox);	//init controller;
-		
 	}
 #pragma endregion
 
@@ -203,5 +202,7 @@ private: System::Void clearButton_Click(System::Object^  sender, System::EventAr
 	delete actionshandlers;
 
 	actionshandlers = gcnew ActionsHandlers(pictureBox);
+}
+private: System::Void statusStrip1_ItemClicked(System::Object^  sender, System::Windows::Forms::ToolStripItemClickedEventArgs^  e) {
 }
 };

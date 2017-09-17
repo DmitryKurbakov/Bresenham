@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "BrezenkhemDrawing.h"
+#include "BresenhamDrawing.h"
 
 using namespace System::Windows::Forms;
 
@@ -15,7 +15,7 @@ ref class ActionsHandlers
 private:
 	
 	//Reference to the Graphics layer object
-	BrezenkhemDrawing^ brezDrawing;
+	BresenhamDrawing^ brezDrawing;
 
 	//Reference to the PictureBox from MyForm
 	PictureBox^ pictureBox;
