@@ -1,6 +1,6 @@
 
 //	This class is a controller of MyForm.
-//	It performs the function of handlers of some form objects and also
+//	It performs the function of handlers of some form objects and
 //	transfer parametrs to Graphics layer.
 
 #pragma once

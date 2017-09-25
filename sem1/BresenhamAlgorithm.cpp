@@ -10,6 +10,7 @@ BresenhamAlgorithm::~BresenhamAlgorithm()
 {
 }
 
+//Realisation of sign function
 template <typename T> int sgn(T val)
 {
 	return (T(0) < val) - (val < T(0));
@@ -19,7 +20,9 @@ void BresenhamAlgorithm::BresenhamLine(int x0, int y0, int x1, int y1)
 {
 	bool flag = true;
 
-	int i = 0, s0 = sgn(x1 - x0), s1 = sgn(y1 - y0);
+	int i = 0, 
+		s0 = sgn(x1 - x0), 
+		s1 = sgn(y1 - y0);
 
 	int
 		x = x0, y = y0,
@@ -71,10 +74,12 @@ void BresenhamAlgorithm::BresenhamLine(int x0, int y0, int x1, int y1)
 	}
 }
 
+
+
 void BresenhamAlgorithm::BresenhamCircle(int x0, int y0, int radius)
 {
 
-	int x = 0, y = radius, gap = 0, delta = (2 - 2 * radius);
+	int x = 0, y = radius, gap = 0, delta = 2 - 2 * radius;
 	while (y >= 0)
 	{
 		PushPoint(x0 + x, y0 + y);
@@ -83,12 +88,16 @@ void BresenhamAlgorithm::BresenhamCircle(int x0, int y0, int radius)
 		PushPoint(x0 - x, y0 + y);
 
 		gap = 2 * (delta + y) - 1;
+
 		if (delta < 0 && gap <= 0)
 		{
 			x++;
 			delta += 2 * x + 1;
 			continue;
 		}
+		
+		gap = 2 * delta - 2 * x - 1;
+
 		if (delta > 0 && gap > 0)
 		{
 			y--;
@@ -96,8 +105,9 @@ void BresenhamAlgorithm::BresenhamCircle(int x0, int y0, int radius)
 			continue;
 		}
 		x++;
-		delta += 2 * (x - y);
 		y--;
+		delta += 2 * (x - y) + 2;
+		
 	}
 }
 
